@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Cute Desktop</title>
+
+
+<style>
+
+body{
+margin:0;
+font-family:cursive;
+background:#dfb2c3;
+display:flex;
+justify-content:center;
+align-items:center;
+height:100vh;
+}
+
+/* MistyCode Lab NOTE : window */
+
+.window{
+position:relative;
+width:650px;
+border-radius:10px;
+overflow:hidden;
+box-shadow:0 10px 25px rgba(0,0,0,0.25);
+
+background-image:url("images/cutepink.jpg");
+background-size:cover;
+background-position:center;
+}
+.window::before{
+content:"";
+position:absolute;
+inset:0;
+background:rgba(255,255,255,0.55);
+
+}
+.window > *{
+position:relative;
+z-index:1;
+}
+
+/* MistyCode Lab NOTE : topbar */
+
+.topbar{
+background:#eeacc0;
+padding:10px;
+display:flex;
+justify-content:space-between;
+font-size:14px;
+}
+
+/* MistyCode Lab NOTE : main */
+
+.main{
+display:flex;
+background:transparent;
+min-height:300px;
+}
+
+/* MistyCode Lab NOTE : sidebar */
+
+.sidebar{
+width:130px;
+background:#f6e8f0;
+padding:15px;
+}
+
+.icon{
+margin-bottom:20px;
+cursor:pointer;
+font-size:16px;
+}
+
+/* MistyCode Lab NOTE : content */
+
+.content{
+flex:1;
+display:flex;
+flex-direction:column;
+align-items:center;
+justify-content:center;
+text-align:center;
+padding:20px;
+}
+
+/* MistyCode Lab NOTE : random photo */
+
+.photo{
+max-width:180px;
+display:none;
+margin-top:10px;
+}
+
+/* MistyCode Lab NOTE : note card */
+
+.note{
+background:white;
+padding:12px 16px;
+border-radius:10px;
+box-shadow:0 5px 12px rgba(0,0,0,0.2);
+margin-top:10px;
+display:none;
+}
+
+/* MistyCode Lab NOTE : bottom bar */
+
+.bottom{
+background:#8fb1cc;
+color:white;
+padding:8px;
+text-align:center;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="window">
+
+<div class="topbar">
+<div id="date"></div>
+<div>☰</div>
+</div>
+
+<div class="main">
+
+<div class="sidebar">
+
+<div class="icon" onclick="showPhoto()">📁 Files 😘🌹</div>
+
+<div class="icon" onclick="showNote()">📝 Notes 🧸🌹</div>
+
+</div>
+
+<div class="content">
+
+<div>I Message for you</div>
+
+<img id="photo" class="photo">
+
+<div id="note" class="note"></div>
+
+</div>
+
+</div>
+
+<div class="bottom" id="clock"></div>
+
+</div>
+
+<script>
+
+/* MistyCode Lab NOTE : date */
+
+const d=new Date()
+document.getElementById("date").innerText=d.toDateString()
+
+/* MistyCode Lab NOTE : clock */
+
+function updateClock(){
+const now=new Date()
+document.getElementById("clock").innerText=now.toLocaleTimeString()
+}
+
+setInterval(updateClock,1000)
+updateClock()
+
+/* MistyCode Lab NOTE : random photos */
+
+const photos=[
+"images/kucing-lucu.jpg",
+"images/nct.jpg",
+"images/no-money.jpg"
+]
+
+function showPhoto(){
+
+const rand=Math.floor(Math.random()*photos.length)
+
+const img=document.getElementById("photo")
+
+img.src=photos[rand]
+img.style.display="block"
+
+}
+
+/* MistyCode Lab NOTE : random notes */
+
+const notes=[
+"You make my day 🌼",
+"Stay cute always 🐻",
+"Sending you a smile 😊",
+"You are amazing 💙",
+"Have a nice day ☀️"
+]
+
+function showNote(){
+
+const rand=Math.floor(Math.random()*notes.length)
+
+const card=document.getElementById("note")
+
+card.innerText=notes[rand]
+card.style.display="block"
+
+}
+
+</script>
+
+</body>
+</html>
